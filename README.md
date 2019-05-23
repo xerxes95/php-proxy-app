@@ -26,7 +26,7 @@ This step will allow users on the internet to access your service from the inter
 
 Once there, set up port-forwarding from `<EXTERNAL_PORT>` to `<LAN_IP_ADDRESS>:<INTERNAL_PORT>`, where `<LAN_IP_ADDRESS>` is the local IP address of the device which will be running the proxy server.
 
-2.2 Finally, find the Wide IP Address of your router at this link. I found mine [here](https://www.whatismypublicip.com/) but you can also find it by simply googling "My public IP Address".
+2.2 Finally, find the Wide IP Address of your router. I found mine [here](https://www.whatismypublicip.com/) but you can also find it by simply googling "My public IP Address".
 
 After doing this, users will access your proxy via the url `http://<ROUTER_IP_ADDRESS>:<EXTERNAL_PORT>`
 

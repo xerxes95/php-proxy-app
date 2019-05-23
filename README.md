@@ -1,64 +1,36 @@
+## Fork of php-proxy-app
 
-<center>
-  
-![](https://img.shields.io/packagist/dt/Athlon1600/php-proxy-app.svg) ![](https://img.shields.io/github/last-commit/Athlon1600/php-proxy-app.svg) ![](https://img.shields.io/github/license/Athlon1600/php-proxy-app.svg)
+These are my instructions for configuring php-proxy-app, a Web app built around php-proxy. For more details, see the [Project Homepage](https://www.php-proxy.com/).
 
-</center>
+### Tested on:
+1. MacOS Sierra 10.12.6
+2. PHP 5.6.30 (cli)
 
+### Download
+ ```bash
+ $ ./download_vendor.sh
+ ```
 
-# php-proxy-app
+### Setup
+##### 1) Configure the Server
+1.1. Set the app_key on line 7 of `config.php`:
+```php
+$config['app_key'] = 'mikhail\'s proxy';
+```
+1.2. (Optional) modify `templates/main.php` for a custom Homepage display
 
-Web Proxy Application built on [**php-proxy library**](https://github.com/Athlon1600/php-proxy) ready to be installed on your server
+##### 2) Configure your Home Router
+This step will allow users on the internet to access your service from the internet by typing in the IP address of your home router into their browser.
 
-![alt text](http://i.imgur.com/KrtU5KE.png?1 "This is how PHP-Proxy looks when installed")
+2.1. Set up **port-forwarding** on your router. I logged into my Linksys router by typing 192.168.1.1 into my browser, logging in, and navigating to Security > Apps and Gaming > Single Port Forwarding. You may need to look up how to navigate to the port forwarding page of your router.
 
-## To Do List
+Once there, set up port-forwarding from `<EXTERNAL_PORT>` to `<LAN_IP_ADDRESS>:<INTERNAL_PORT>`, where `<LAN_IP_ADDRESS>` is the local IP address of the device which will be running the proxy server.
 
-As of **March 25**, 2018:
+2.2 Finally, find the Wide IP Address of your router at this link. I found mine [here](https://www.whatismypublicip.com/) but you can also find it by simply googling "My public IP Address".
 
-* Plugin for facebook.com  
-* Plugin for dailymotion.com
-* Better support/documentation for Plugin Development
-* Better Javascript support
+After doing this, users will access your proxy via the url `http://<ROUTER_IP_ADDRESS>:<EXTERNAL_PORT>`
 
-## Web-Proxy vs Proxy Server
-
-Keep in mind that sites/pages that are too script-heavy or with too many "dynamic parts", may not work with this proxy script.
-That is a known limitation of web proxies. For such sites, you should use an actual proxy server to route your browser's HTTP requests through:  
-
-https://www.proxynova.com/proxy-software/
-
-
-## Installation
-
-Keep in mind that this is a **project** and not a library. Installing this via *require* would do you not good.
-A project such as this, should be installed straight into the public directory of your web server.
-
+#### Run the Server
 ```bash
-composer create-project athlon1600/php-proxy-app:dev-master /var/www/
+$ php -S <LAN_IP_ADDRESS>:<INTERNAL_PORT>
 ```
-
-If you do not have composer or trying to host this application on either a **shared hosting**, or a VPS hosting with limited permissions (dreamhost.com), then download a pre-installed version of this app as a ZIP archive from [**www.php-proxy.com**](https://www.php-proxy.com/).
-
-**Direct Link:**  
-https://www.php-proxy.com/download/php-proxy.zip
-
-## Keep it up-to-date
-
-Application itself rarely will change, vast majority of changes will be done to its requirement packages like php-proxy. Simply call this command once in a while to make sure your proxy is always using the latest versions.
-
-```
-composer update
-```
-
-#### config.php
-
-This file will be loaded into the global Config class.
-
-#### /templates/
-
-This should have been named "views", but for historic purposes we keep it named as templates for now.
-
-#### /plugins/
-
-PHP-Proxy provides many of its own native plugins, but users are free to write their own custom plugins, which could then be automatically loaded from this very folder. See /plugins/TestPlugin.php for an example.

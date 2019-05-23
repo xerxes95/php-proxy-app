@@ -2,7 +2,7 @@
 <html>
 <head>
 
-<title>PHP-Proxy</title>
+<title>Mikhail's Magical Proxy</title>
 
 <meta name="generator" content="php-proxy.com">
 <meta name="version" content="<?=$version;?>">
@@ -27,9 +27,9 @@ html body {
 #frm {
 	padding:10px 15px;
 	background-color:#FFC8C8;
-	
+
 	border:1px solid #818181;
-	
+
 	-webkit-border-radius: 8px;
 	-moz-border-radius: 8px;
 	border-radius: 8px;
@@ -51,34 +51,46 @@ html body {
 <div id="container">
 
 	<div style="text-align:center;">
-		<h1 style="color:blue;">PHP-Proxy</h1>
+		<h1 style="color:blue;">
+			<font size="7">
+				Mikhail's Magical Proxy
+			</font>
+		</h1>
 	</div>
-	
+
+	<div style="text-align:center;">
+		<h1 style="color:blue;">
+			<font size = "3">
+				Type any URL into the box below (e.g. "google.com", "netflix.com", etc.). Enjoy!
+			</font>
+		</h1>
+	</div>
+
 	<?php if(isset($error_msg)){ ?>
-	
+
 	<div id="error">
 		<p><?php echo strip_tags($error_msg); ?></p>
 	</div>
-	
+
 	<?php } ?>
-	
+
 	<div id="frm">
-	
+
 	<!-- I wouldn't touch this part -->
-	
+
 		<form action="index.php" method="post" style="margin-bottom:0;">
 			<input name="url" type="text" style="width:400px;" autocomplete="off" placeholder="http://" />
 			<input type="submit" value="Go" />
 		</form>
-		
+
 		<script type="text/javascript">
 			document.getElementsByName("url")[0].focus();
 		</script>
-		
+
 	<!-- [END] -->
-	
+
 	</div>
-	
+
 </div>
 
 <div id="footer">
